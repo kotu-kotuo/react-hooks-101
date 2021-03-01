@@ -1,7 +1,7 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
 
 const App = () => {
-  return <div>おっぱい</div>;
-}
+  return <></>;
+};
 
 export default App;

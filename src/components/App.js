@@ -1,35 +1,36 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useReducer } from 'react'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import EventForm from './EventForm'
+import Events from './Events'
+import OperationLogs from './OperationLogs'
+import AppContext from '../contexts/AppContext'
+import reducer from '../reducers'
+
+const APP_KEY = 'appWithRedux'
 
 const App = () => {
-  return <><div className="container-fluid">
-    <h4>イベントフォーム作成</h4>
-    <form>
-      <div className="form-group">
-        <label htmlFor="formEventTitle">タイトル</label>
-        <input className="form-control" id="formEventTitle"/>
+  const appState = localStorage.getItem(APP_KEY)
+  const initialState = appState ? JSON.parse(appState) : {
+    events: [],
+    operationLogs: []
+  }
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(state))
+  }, [state])
+
+  return (
+    <AppContext.Provider value={{ state, dispatch }}>
+      <div className="container-fluid">
+        <EventForm />
+        <Events />
+        <OperationLogs />
       </div>
-      <div className="form-group">
-        <label htmlFor="formEventBody">ボディ</label>
-        <input className="form-control" id="formEventBody"/>
-      </div>
+    </AppContext.Provider>
+  )
+}
 
-      <button className="btn btn-primary">イベントを作成する</button>
-      <button className="btn btn-danger">全てのイベントを削除する</button>
-    </form>
-
-    <h4>イベント一覧</h4>
-    <table className="table table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>タイトル</th>
-          <th>ボディ</th>
-          <th></th>
-        </tr>
-      </thead>
-    </table>
-  </div></>;
-};
-
-export default App;
+export default App

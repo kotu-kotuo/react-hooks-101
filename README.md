@@ -1,70 +1,164 @@
-# Getting Started with Create React App
+# React Hooks 入門 - HooksとReduxを組み合わせて最新のフロントエンド状態管理手法を習得しよう！
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本リポジトリは、Udemyのプログラミングコース「React Hooks 入門 - HooksとReduxを組み合わせて最新のフロントエンド状態管理手法を習得しよう！」
 
-## Available Scripts
+の動画の中で実際に書いたソースコードを管理するためのものです。
 
-In the project directory, you can run:
+ソースコードは`git clone`コマンドで取得することが可能です。
 
-### `yarn start`
+```bash
+$ git clone git@github.com:DiveIntoHacking/react-hooks-101.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+または
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+$ git clone https://github.com/DiveIntoHacking/react-hooks-101.git
+```
 
-### `yarn test`
+以下の表は、各レクチャーの名称とそのレクチャーで作成されたブランチ名との対応を示す表です。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+もし、レクチャーの中でうまく動作せず行き詰まったり、あるいは正常に動作はしたものの自分の書いたコードとの比較を行ったりするといった場合には、
+各ブランチをcheckoutして参考にしてみてください。
+全てレクチャーの収録時のソースコードと全く同じものをcommitしています。
 
-### `yarn build`
+|レクチャー名|ブランチ名|
+|---|---|
+|create-react-appでReactアプリケーションの雛形を作成しよう|init, template|
+|はじめてのReact Hooks ということで useState でファンクションコンポーネントに状態を持たせよう|hello-react-hooks|
+|複数の状態を管理しよう|multiple-states|
+|複数の状態を1つのオブジェクトに統合しよう|object-and-useState|
+|useEffect でコールバックを実装しよう|useEffect|
+|状態遷移とは何かを改めて考えてみよう|N/A|
+|Bootstrapを導入しよう|install-bootstrap|
+|イベントの状態遷移を管理するreducerを作成しよう|create-reducer-for-events|
+|useReducerでreducerを実際に使ってみよう|use-reducer-with-useReducer|
+|イベント一覧に作成したイベントを表示させよう|display-events|
+|イベント一括削除処理を実装しよう|delete-all-events|
+|肥大化したコンポーネントを役割毎に分割しよう|separate-components|
+|アクションのタイプは定数がお好き|types-of-action-like-constants|
+|Prop Drilling問題とそれを解消するための手段の紹介|N/A|
+|はじめてのReact Context|create-react-context|
+|Providerのセットアップをしよう|setup-context-provider|
+|Prop Drilling問題をやっつけよう|solve-prop-drilling-issue|
+|より複雑な状態を管理しよう|N/A|
+|やっぱりreduxをインストールしよう|install-redux|
+|イベント用のreducerのリファクタリングをしよう|refactor-events-reducer|
+|操作ログ用のreducerを作成しよう|create-operationLogs-reducer|
+|正規化された時間を作ろう|iso8601|
+|操作ログを保存しよう|create-operationLogs|
+|全ての操作ログを削除しよう|delete-all-operationLogs|
+|イベント削除時の操作ログも残そう|create-operationLog-in-case-of-event-deletion|
+|操作ログ一覧を表示させよう|display-all-operationLogs|
+|locaStorageの各種メソッドのおさらいをしよう|N/A|
+|localStorageで状態の永続化をしよう|save-state-with-localStorage|
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+/* N/Aの箇所では特別なブランチは存在しません。 */
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 注意事項
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+本コースで導入するnpm パッケージは、全てバージョン(動画収録時の最新版)を特定してインストールしています。
 
-### `yarn eject`
+動画の内容と同じ動作を保証するためには同じバージョンのパッケージをインストールする必要がありますが、動画の中でもバージョンを指定したインストールの方法を紹介していますので、その通りに実行してみてください。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+例えば、 `bootstrap` をインストールする場合は、以下の方法を推奨します。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+$ yarn add bootstrap@4.3.1
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+以下のようにバージョンを未指定でインストールした場合は、最新のバージョンのパッケージがインストールされることになり、動画の中で紹介している挙動やUIとは異なるものになる可能性がありますので、非推奨としています。
 
-## Learn More
+もし以下のようにされる場合は自己責任で行なってください。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+$ yarn add bootstrap
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## FAQ
 
-### Code Splitting
+gitやGitHubに慣れていない方から寄せられる質問をまとめています。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### このリポジトリの変更などを知る方法はありますか？
 
-### Analyzing the Bundle Size
+こちらのリポジトリのトップページの画面上部にあるstarボタンをクリックすると、GitHubのトップページのタイムラインにそのリポジトリを追跡することができますのでやってみてください。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 自分のアカウントにリポジトリをぶら下げたいのですが。。。
 
-### Making a Progressive Web App
+forkすることで可能です。画面右上の`Fork`ボタンをクリックしてください。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### リポジトリを新規にcloneを行い、該当のブランチにcheckoutする方法は？
 
-### Advanced Configuration
+`git clone`後に、例えば、`modules`というブランチをcheckoutしたい場合を例にすると、以下のようにコマンドを実行することになります。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+$ git clone git@github.com:DiveIntoHacking/react-hooks-101.git
+$ cd react-hooks-101
+$ git checkout -t origin/solve-prop-drilling-issue
+$ yarn install
+$ yarn start
+```
 
-### Deployment
+あるいは、下記のコマンドだとbranch名を指定することでワンラインで実行可能です。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+```bash
+$ git clone --branch solve-prop-drilling-issue git@github.com:DiveIntoHacking/react-hooks-101.git
+$ cd react-hooks-101
+$ yarn install
+$ yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### あるブランチで実装した内容を知るには？
+
+まず、ブランチ名を確認するために`git branch -a`を実行します。
+
+本コースでは、1 branch につき、1 commitを行っていますので、以下の例の様に`git show`コマンドで当該ブランチの直近のcommitを表示することで、そのブランチで実装した全ての内容を知ることができます。
+
+```bash
+$ git show origin/display-events
+```
+
+まずレクチャーを進める前に全貌を知っておきたい！という方にはおすすめです。
+
+### プログラムの誤りを見つけてたがその連絡の手段は？
+
+本プログラムはUdemy教育用のものですので、受講生からのリクエストを最優先していますので、Udemyのコースに設置されている公式のQ&Aにてご指摘の内容をご報告頂ければ有り難いです。
+(本プログラムはオープンソースプロジェクトではありませんのでGitHubのIssuesでお知らせ頂いても対応出来ない場合がありますのでご了承ください。)
+
+その他、不明な点が有りましたらUdemyのQ&Aにてご質問ください。
+
+## 動画コース一覧
+
+他にも以下のコースをUdemyにて公開中です。
+
+
+|タイトル|概要|
+|---|---|
+|[フロントエンドエンジニアのためのReact・Reduxアプリケーション開発入門](https://www.udemy.com/react-application-development/?couponCode=GITHUB-REPO-README)|RESTful APIサーバと連携する実践的なCRUDアプリケーション開発手法を学び、今後のフロントエンドWeb開発の標準になり得るReact・Reduxアプリケーション開発をマスターし、もう一段階上のJavsScriptエンジニアになろう|
+|[GraphQL with React入門 - QueryとMutationを学びPaginationの実装にチャレンジ！](https://www.udemy.com/graphql-with-react/?couponCode=GITHUB-README-FOOTER)|GraphQLの言語仕様を学習し、GitHubのGraphQL APIと連携するReactアプリケーションの実装にチャレンジします！React/GraphQL/Apollo等を利用し、近未来を見据えたAPI開発手法を先取りしよう！|
+|[モジュールバンドラーwebpackを1日で習得！しかもフルスクラッチでインストールからカスタマイズまでの手順を理解する](https://www.udemy.com/webpack-crash-course/?couponCode=GITHUB-README-FOOTER)|Reactを題材にし各種形式のモジュールをローダー(babel/css/sass/html/eslint)やプラグイン(JS圧縮のカスタム/CSSのファイル分離と圧縮)でバンドルする方法をハンズオンで解説、今回もGitHubにソース完全公開|
+|[React Hooks 入門 - HooksとReduxを組み合わせて最新のフロントエンド状態管理手法を習得しよう！](https://www.udemy.com/react-hooks-101/?couponCode=GITHUB-README-FOOTER)|Vue.js Firebase Docker Gatsby などを抑え、なんと受講生の37.2%が次に学びたいと注目度の高い React Hooks 。複雑な状態管理をシンプルに且つ美しく実装するためのフロントエンド開発手法を身につけよう！|
+
+
+
+
+
+
+<div align='right'>
+Dive into Hacking!
+</div>
+<div align='right'>
+Udemy プログラミング講師
+</div>
+<div align='right'>
+
+[はむ - プログラミングおじさん](https://www.udemy.com/user/76100880-5658-4a37-be77-5525d39a4726/)
+
+</div>
+
+
+
+
+
